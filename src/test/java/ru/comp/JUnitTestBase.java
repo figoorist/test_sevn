@@ -1,24 +1,21 @@
 package ru.comp;
 
-import java.net.URL;
-
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.rules.ExternalResource;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-import ru.stqa.selenium.factory.WebDriverPool;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Base class for all the JUnit-based test classes
  */
 public class JUnitTestBase {
 
-  protected static URL gridHubUrl;
   protected static String baseUrl;
-  protected static Capabilities capabilities;
+  protected static String email;
+  protected static String surveyUrl;
 
   protected WebDriver driver;
 
@@ -28,18 +25,26 @@ public class JUnitTestBase {
     protected void before() throws Throwable {
       SuiteConfiguration config = new SuiteConfiguration();
       baseUrl = config.getProperty("site.url");
-      if (config.hasProperty("grid.url") && !"".equals(config.getProperty("grid.url"))) {
-        gridHubUrl = new URL(config.getProperty("grid.url"));
-      }
-      capabilities = config.getCapabilities();
-    };
+      email = config.getProperty("email");
+      surveyUrl = config.getProperty("surveyUrl");
+    }
   };
 
   @Rule
   public ExternalResource webDriver = new ExternalResource() {
-    @Override
-    protected void before() throws Throwable {
-      driver = WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities);
-    };
+      @Override
+      protected void before() {
+          driver = new ChromeDriver();
+          //set wait timeout
+          driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+          //maximize screen
+          driver.manage().window().maximize();
+          driver.get(baseUrl);
+      }
+
+      @Override
+      protected void after() {
+          driver.quit();
+      }
   };
 }
