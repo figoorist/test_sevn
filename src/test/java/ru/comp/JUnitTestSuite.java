@@ -11,7 +11,7 @@ import org.junit.runners.Suite.SuiteClasses;
 import ru.stqa.selenium.factory.WebDriverPool;
 
 @RunWith(Suite.class)
-@SuiteClasses({SampleJUnitTest.class})
+@SuiteClasses({WrikeJUnitTest.class})
 public class JUnitTestSuite {
 
   @Rule
@@ -20,6 +20,8 @@ public class JUnitTestSuite {
     protected void finished(Description description) {
       super.finished(description);
       WebDriverPool.DEFAULT.dismissAll();
-    };
+    }
   };
+
+
 }

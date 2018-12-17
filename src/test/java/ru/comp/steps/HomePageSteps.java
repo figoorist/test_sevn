@@ -46,6 +46,9 @@ public class HomePageSteps {
         homepage.getStartFreeTrialEmailField().sendKeys(randomString(6) + "+" + emailPart);
         // 4. Click on "Create my Wrike account" button
         homepage.getStartFreeTrialSubmit().click();
-        wd.findElement(By.name("iframe")).findElement(By.linkText("NO")).click();
+        wd.switchTo().defaultContent();
+        wd.switchTo().frame(wd.findElement(By.tagName("iframe")));
     }
 }
+
+//html/body/c-wiz/div/div/div[2]/div[4]/span[1]/div

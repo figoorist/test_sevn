@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class SurveyPageSteps {
     /**
-     * HomePage object
+     * SurveyPage object
      */
     private SurveyPage surveyPage;
 
@@ -23,12 +23,19 @@ public class SurveyPageSteps {
 
     /**
      * 5. Fill in the Q&A section at the left part of page (like random generated answers)
-     * @param values
+     * @param values Question choices
      */
     public void fillInTheQAndASectionStep(ArrayList<String> values){
         for(int i = 0; i < surveyPage.getQuestionElements().size(); i++){
-            surveyPage.getQuestionElements().get(i).findElement(By.linkText(values.get(i))).click();
+            surveyPage.getQuestionElements().get(i).findElement(By.xpath("//button[contains(text(),'" + values.get(i) + "')]")).click();
         }
         surveyPage.getSubmitSurveyButton().click();
+    }
+
+    /**
+     * 6. Click on "Resend email"
+     */
+    public void clickOnResendEmail(){
+        surveyPage.getResendEmailButton().click();
     }
 }

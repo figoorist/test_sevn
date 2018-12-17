@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.pagefactory.ByChained;
 
 /**
  * Home page Wrike
@@ -33,7 +32,7 @@ public class HomePage extends Page {
      * @return
      */
     public WebElement getGetStartedForFreeButton(){
-        return driver.findElement(By.xpath("//form[contains(text(), 'Get started ')]")).findElement(By.tagName("button"));
+        return driver.findElement(By.xpath("/html/body/div[1]/header/div[3]/div[2]/div/div/div[2]/div/form/button"));
     }
 
     /**
@@ -41,7 +40,7 @@ public class HomePage extends Page {
      * @return
      */
     public WebElement getStartFreeTrialForm(){
-        return driver.findElement(By.xpath("//form[contains(text(), 'Start Free trial')]"));
+        return driver.findElement(By.xpath("//*[@id=\"modal-pro\"]/form"));
     }
 
     /**
