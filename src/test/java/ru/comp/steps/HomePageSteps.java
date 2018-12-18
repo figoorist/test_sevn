@@ -1,5 +1,6 @@
 package ru.comp.steps;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -38,6 +39,7 @@ public class HomePageSteps {
      * Open Q&A section
      * @param emailPart
      */
+    @Step("Go to Q&A section")
     public void goToQAndASectionStep(String emailPart) {
         // 2. Click "Get started for free" button near "Login" button;
         homepage.getGetStartedForFreeButton().click();
@@ -50,5 +52,3 @@ public class HomePageSteps {
         wd.switchTo().frame(wd.findElement(By.tagName("iframe")));
     }
 }
-
-//html/body/c-wiz/div/div/div[2]/div[4]/span[1]/div

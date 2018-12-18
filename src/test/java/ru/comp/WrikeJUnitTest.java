@@ -1,5 +1,6 @@
 package ru.comp;
 
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +22,7 @@ public class WrikeJUnitTest extends JUnitTestBase {
     }
 
     @Test
+    @DisplayName("Move to survey page test")
     public void testMoveToSurveyPage() {
         HomePageSteps homePageSteps = new HomePageSteps(driver);
 
@@ -30,6 +32,7 @@ public class WrikeJUnitTest extends JUnitTestBase {
     }
 
     @Test
+    @DisplayName("Submit Q&A section test")
     public void testSubmitQAndASection(){
         SurveyPageSteps surveyPageSteps = new SurveyPageSteps(driver);
 
@@ -44,6 +47,7 @@ public class WrikeJUnitTest extends JUnitTestBase {
     }
 
     @Test
+    @DisplayName("Resend email button test")
     public void testResendEmailButton(){
         SurveyPageSteps surveyPageSteps = new SurveyPageSteps(driver);
 
@@ -57,6 +61,7 @@ public class WrikeJUnitTest extends JUnitTestBase {
      *  7. Check that section "Follow us" at the site footer contains the "Twitter" button that leads to the correct url and has the correct icon.
      */
     @Test
+    @DisplayName("Check that section \"Follow us\"")
     public void testTwitter(){
         Assert.assertTrue(surveyPage.getTwitterLink().isDisplayed());
     }
